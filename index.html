@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedido - Kure Fleximedical</title>
+
+  <!-- Open Graph / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://seudominio.com/pedido">
+  <meta property="og:title" content="Pedido - Kure Fleximedical">
+  <meta property="og:description" content="Faça seu pedido online com a Fleximedical de forma prática e rápida.">
+  <meta property="og:image" content="https://seudominio.com/img/banner.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter / Mobile preview -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pedido - Kure Fleximedical">
+  <meta name="twitter:description" content="Faça seu pedido online com a Fleximedical de forma prática e rápida.">
+  <meta name="twitter:image" content="https://seudominio.com/img/banner.jpg">
+
+  <style>
+    /* ===== Reset ===== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ===== Fundo degradê com textura ===== */
+    body {
+      font-family: "Inter", Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      position: relative;
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #005bea, #7536ff);
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+      opacity: 0.1;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ===== Header + Banner ===== */
+    .header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 0;
+      z-index: 1;
+    }
+
+    .banner {
+      width: 100%;
+      max-width: 720px;
+      border-radius: 12px 12px 0 0;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .banner img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ===== Container ===== */
+    .container {
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(145deg, #ffffff, #f1f1f1);
+      padding: 35px;
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+      max-width: 720px;
+      width: 100%;
+      animation: fadeIn 0.6s ease;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    /* ===== Form ===== */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      display: block;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      background: #fff;
+      color: #333;
+      resize: vertical;
+      min-height: 45px;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #777;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border: 1px solid #7536ff;
+      box-shadow: 0 0 8px rgba(117, 54, 255, 0.4);
+      transform: scale(1.01);
+    }
+
+    /* ===== Botão ===== */
+    button[type="submit"],
+    .btn-whatsapp {
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #005bea, #7536ff);
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-align: center;
+      display: block;
+      text-decoration: none;
+    }
+
+    button[type="submit"]:hover,
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    button[type="submit"]:active,
+    .btn-whatsapp:active {
+      transform: scale(0.98);
+    }
+
+    /* ===== Mensagem ===== */
+    #mensagem {
+      margin-top: 18px;
+      font-weight: 600;
+      text-align: center;
+      font-size: 1rem;
+      color: #333;
+      min-height: 20px;
+    }
+
+    /* ===== Rodapé ===== */
+    .footer {
+      margin-top: 50px;
+      width: 100%;
+      background: #1e1e2f;
+      padding: 40px 20px;
+      border-radius: 12px 12px 0 0;
+      box-shadow: 0 -4px 15px rgba(0,0,0,0.25);
+      color: #fff;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      gap: 20px;
+    }
+
+    .footer-texto {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .footer-texto h2 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .footer-texto p {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #ccc;
+    }
+
+    .footer-texto a {
+      color: #00bfff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer-texto a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-premios {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-premios img {
+      height: 70px;
+      width: auto;
+      object-fit: contain;
+      transition: transform 0.3s;
+    }
+
+    .footer-premios img:hover {
+      transform: scale(1.1);
+    }
+
+    /* ===== Responsivo ===== */
+    @media (max-width: 768px) {
+      .container {
+        padding: 24px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      .banner img {
+        height: 120px;
+      }
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* ===== Animação ===== */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Banner -->
+  <div class="header">
+    <div class="banner">
+      <img src="img/banner.jpg" alt="Kure Fleximedical">
+    </div>
+  </div>
+
+  <!-- Formulário -->
+  <div class="container">
+    <h1>Pedido - Kure Fleximedical</h1>
+
+    <form id="pedidoForm">
+      <label for="emailCliente">E-mail do Cliente *</label>
+      <input type="email" name="emailCliente" id="emailCliente" required placeholder="Digite o e-mail" />
+
+      <label>Nome da Empresa *</label>
+      <input type="text" name="empresa" required placeholder="Digite o nome da empresa" />
+
+      <label>Nome do Requisitante *</label>
+      <input type="text" name="requisitante" required placeholder="Digite o nome do requisitante" />
+
+      <label>Projeto Desejado *</label>
+      <input type="text" name="projeto" required placeholder="Digite o projeto desejado" />
+
+      <label>Itens (descrição detalhada) *</label>
+      <textarea name="itens" required placeholder="Descreva os itens..."></textarea>
+
+      <label>Quantidade *</label>
+      <input type="text" name="quantidade" required placeholder="Digite a quantidade" />
+
+      <label>Observações</label>
+      <textarea name="observacoes" placeholder="Alguma observação?"></textarea>
+
+      <label>Data Prevista *</label>
+      <input type="date" name="dataPrevista" required />
+
+      <button type="submit" id="btnEnviar">Enviar Pedido</button>
+    </form>
+
+    <div id="mensagem"></div>
+
+    <!-- Botão Compartilhar WhatsApp -->
+    <a class="btn-whatsapp" href="https://api.whatsapp.com/send?text=Confira%20meu%20pedido%20na%20Kure%20Fleximedical:%20https://seudominio.com/pedido" target="_blank">
+      📲 Compartilhar no WhatsApp
+    </a>
+  </div>
+
+  <!-- Rodapé -->
+  <div class="footer">
+    <div class="footer-inner">
+      <div class="footer-texto">
+        <h2>FLEXIMEDICAL: NOSSAS PREMIAÇÕES</h2>
+        <p>
+          Conheça mais sobre nossa trajetória e os projetos que nos destacam no mercado.  
+          <a href="https://fleximedical.com.br/" target="_blank">Acesse nosso site</a> e saiba mais sobre nós.
+        </p>
+      </div>
+      <div class="footer-premios">
+        <img src="img/premio1.png" alt="Premiação 1">
+        <img src="img/premio2.png" alt="Premiação 2">
+        <img src="img/premio3.png" alt="Premiação 3">
+        <img src="img/premio4.png" alt="Premiação 4">
+        <img src="img/premio5.png" alt="Premiação 5">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('pedidoForm');
+    const mensagem = document.getElementById('mensagem');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        await fetch('https://script.google.com/macros/s/AKfycbzoy5CkS4jbdFEVgvqfa9xziyup1Z9TrznPa_ppLgHOdn2l9TJKnsnDZDXjgsQZPKcv6g/exec', {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        mensagem.textContent = '✅ Pedido enviado com sucesso!';
+        mensagem.style.color = 'green';
+        form.reset();
+      } catch (error) {
+        mensagem.textContent = '❌ Erro ao enviar pedido: ' + error.message;
+        mensagem.style.color = 'red';
+      }
+    });
+  </script>
+</body>
+</html>
